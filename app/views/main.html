@@ -1,0 +1,43 @@
+<div class="jumbotron">
+  <p class="lead">
+    Gestion des plannings Librairie La Bourse
+  </p>
+  <div class="btn btn-lg btn-success" ngf-select="upload($file)"><span class="glyphicon glyphicon-upload"></span>
+    Télécharger un planning
+  </div>
+</div>
+
+<div class="row" ng-repeat="employeeExtractedData in extractedExcelData" style="margin-top:20px;">
+
+  <legend>Heures de {{employeeExtractedData.employee.firstname}}</legend>
+
+  <div ng-repeat="timelapse in employeeExtractedData.timelapses">
+
+    <strong>{{timelapse.startDate | amDateFormat: 'dddd Do MMMM YYYY'}}</strong>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <td>Heure de début</td>
+        <td>Heure de fin</td>
+        <td>Durée</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{timelapse.startDate | amDateFormat:'HH:mm'}}</td>
+        <td>{{timelapse.endDate | amDateFormat:'HH:mm'}}</td>
+        <td>{{timelapse.differenceInHours}} h</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <h4>Total : {{employeeExtractedData.totalHoursForEmployee}} h</h4>
+
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+  <a class="btn btn-lg btn-success" ng-if="planning && !mailSent" ng-click="sendPlanningByMail(planning)" ng-confirm="Vraiment ?">Envoyer par mail</a>
+</div>
