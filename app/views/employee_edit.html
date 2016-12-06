@@ -1,47 +1,56 @@
 <div class="row">
 
-  <legend>Ajouter un employé</legend>
+  <div class="col-md-12">
 
-  <form name="employeeForm" class="simple-form">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Prénom: <input type="text" ng-model="employee.firstname" class="form-control" required/></label><br/>
-        </div>
-        <div class="form-group">
-          <label>Nom: <input type="text" ng-model="employee.lastname" class="form-control" required/></label><br/>
-        </div>
-        <div class="form-group">
-          <label>E-mail: <input type="email" ng-model="employee.email" class="form-control" required/></label><br/>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Identifiant: <input type="text" ng-model="employee.identifier" class="form-control" required/></label><br/>
-        </div>
-        <div class="form-group">
-          <label>Date de naissance: <input type="date" ng-model="employee.dateOfBirth" class="form-control"/> (format
-            jj/mm/aaaa)</label><br/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label><input type="radio" ng-model="employee.gender" value="MALE"/> Homme</label>
-        <label><input type="radio" ng-model="employee.gender" value="FEMALE"/> Femme</label><br/>
-      </div>
-      <div class="form-group">
-        <label><input type="checkbox" ng-model="employee.active"/> Actif</label><br/>
-      </div>
-    </div>
+    <legend>Modifier un employé</legend>
 
-    <div class="row">
-      <div class="col-md-6">
-        <button type="submit" class="btn btn-success" ng-disabled="!employeeForm.$valid" ng-click="updateEmployee(employee)">Valider</button>
-      </div>
-      <div class="col-md-6">
-        <button class="btn btn-danger" ng-click="deleteEmployee(employee)" ng-confirm="Vraiment ?">Supprimer l'employé</button>
-      </div>
-    </div>
+    <form name="employeeForm" class="simple-form">
 
-  </form>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Prénom: <input type="text" ng-model="employee.firstname" class="form-control" required/></label><br/>
+          </div>
+          <div class="form-group">
+            <label>Nom: <input type="text" ng-model="employee.lastname" class="form-control" required/></label><br/>
+          </div>
+          <div class="form-group">
+            <label>E-mail: <input type="email" ng-model="employee.email" class="form-control" required/></label><br/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Identifiant: <input type="text" ng-model="employee.identifier" class="form-control"
+                                       required/></label><br/>
+          </div>
+          <div class="form-group">
+            <label>Date de naissance: <input type="date" ng-model="employee.dateOfBirth" class="form-control"/> (format
+              jj/mm/aaaa)</label><br/>
+          </div>
+
+          <div class="form-group">
+            <label><input type="radio" ng-model="employee.gender" value="MALE"/> Homme</label>
+            <label><input type="radio" ng-model="employee.gender" value="FEMALE"/> Femme</label><br/>
+          </div>
+          <div class="form-group">
+            <label><input type="checkbox" ng-model="employee.active"/> Actif</label><br/>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-success" ng-disabled="!employeeForm.$valid" ng-click="updateEmployee(employee)">Valider</button>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-danger" ng-click="deleteEmployee(employee)" ng-confirm="Vraiment ?">Supprimer l'employé</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
 
 </div>
+

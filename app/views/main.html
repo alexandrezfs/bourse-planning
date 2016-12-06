@@ -9,35 +9,40 @@
 
 <div class="row" ng-repeat="employeeExtractedData in extractedExcelData" style="margin-top:20px;">
 
-  <legend>Heures de {{employeeExtractedData.employee.firstname}}</legend>
+  <div class="col-md-12">
 
-  <div ng-repeat="timelapse in employeeExtractedData.timelapses">
+    <legend>Heures de {{employeeExtractedData.employee.firstname}}</legend>
 
-    <strong>{{timelapse.startDate | amDateFormat: 'dddd Do MMMM YYYY'}}</strong>
+    <div ng-repeat="timelapse in employeeExtractedData.timelapses">
 
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <td>Heure de début</td>
-        <td>Heure de fin</td>
-        <td>Durée</td>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>{{timelapse.startDate | amDateFormat:'HH:mm'}}</td>
-        <td>{{timelapse.endDate | amDateFormat:'HH:mm'}}</td>
-        <td>{{timelapse.differenceInHours}} h</td>
-      </tr>
-      </tbody>
-    </table>
+      <strong>{{timelapse.startDate | amDateFormat: 'dddd Do MMMM YYYY'}}</strong>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td>Heure de début</td>
+          <td>Heure de fin</td>
+          <td>Durée</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{timelapse.startDate | amDateFormat:'HH:mm'}}</td>
+          <td>{{timelapse.endDate | amDateFormat:'HH:mm'}}</td>
+          <td>{{timelapse.differenceInHours}} h</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <h4>Total : {{employeeExtractedData.totalHoursForEmployee}} h</h4>
 
   </div>
-
-  <h4>Total : {{employeeExtractedData.totalHoursForEmployee}} h</h4>
 
 </div>
 
 <div style="text-align: center; margin-top: 20px;">
-  <a class="btn btn-lg btn-success" ng-if="planning && !mailSent" ng-click="sendPlanningByMail(planning)" ng-confirm="Vraiment ?">Envoyer par mail</a>
+  <a class="btn btn-lg btn-success" ng-if="planning && !mailSent" ng-click="sendPlanningByMail(planning)"
+     ng-confirm="Vraiment ?">Envoyer par mail</a>
 </div>
