@@ -19,7 +19,7 @@ angular
     amMoment.changeLocale('fr');
   })
   .constant('config', {
-    'bourseBackendURL': 'http://localhost:8080/bourse-services'
+    'bourseBackendURL': 'http://services.librairielabourse.fr/bourse-services'
   })
   .config(function ($routeProvider) {
     $routeProvider
