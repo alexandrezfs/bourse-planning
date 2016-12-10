@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('boursePlanningApp')
   .factory('employeeService', function ($q, $http, $log, config, moment) {
 
@@ -5,9 +7,9 @@ angular.module('boursePlanningApp')
 
       var deferred = $q.defer();
 
-      $http.post(config.bourseBackendURL + "/employee", employee)
+      $http.post(config.bourseBackendURL + '/employee', employee)
         .success(function (result) {
-          $log.info("Created employee with ID " + result);
+          $log.info('Created employee with ID ' + result);
           deferred.resolve();
         })
         .error(function (result) {
@@ -23,9 +25,9 @@ angular.module('boursePlanningApp')
 
       var deferred = $q.defer();
 
-      $http.put(config.bourseBackendURL + "/employee", employee)
+      $http.put(config.bourseBackendURL + '/employee', employee)
         .success(function (result) {
-          $log.info("Updated employee with ID " + result);
+          $log.info('Updated employee with ID ' + result);
           deferred.resolve(result);
         })
         .error(function (result) {
@@ -43,7 +45,7 @@ angular.module('boursePlanningApp')
 
       $http.get(config.bourseBackendURL + '/employee/' + id)
         .success(function (employee) {
-          $log.info("Get employee with ID " + id);
+          $log.info('Get employee with ID ' + id);
 
           if(employee.dateOfBirth) {
             employee.dateOfBirth = moment(employee.dateOfBirth).toDate();
@@ -64,6 +66,6 @@ angular.module('boursePlanningApp')
       createEmployee: createEmployee,
       updateEmployee: updateEmployee,
       getEmployee: getEmployee
-    }
+    };
 
   });

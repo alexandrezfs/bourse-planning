@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('boursePlanningApp')
-  .controller('EmployeeCtrl', function ($scope, $http, config, $log, $location) {
+  .controller('EmployeeCtrl', function ($scope, $http, config, $log) {
 
     $scope.employees = [];
 

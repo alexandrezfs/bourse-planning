@@ -31,7 +31,7 @@ angular.module('boursePlanningApp')
       employeeService.updateEmployee(employee)
         .then(function () {
 
-          $location.path("/employees");
+          $location.path('/employees');
       });
     };
 

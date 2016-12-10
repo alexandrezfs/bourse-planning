@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('boursePlanningApp')
   .factory('planningService', function ($q, $http, $log, config, Upload) {
 
@@ -5,13 +7,13 @@ angular.module('boursePlanningApp')
 
       var deferred = $q.defer();
 
-      $http.post(config.bourseBackendURL + "/planning/send/" + planning.id, {})
+      $http.post(config.bourseBackendURL + '/planning/send/' + planning.id, {})
         .success(function () {
-          $log.info("Mail sent for planning " + planning.id);
+          $log.info('Mail sent for planning ' + planning.id);
           deferred.resolve();
         })
         .error(function (response) {
-          $log.error("Error while trying to send the mail. " + response);
+          $log.error('Error while trying to send the mail. ' + response);
         });
 
       return deferred.promise;
@@ -44,6 +46,6 @@ angular.module('boursePlanningApp')
     return {
       sendPlanningByMail : sendPlanningByMail,
       uploadPlanning: uploadPlanning
-    }
+    };
 
   });

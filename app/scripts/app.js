@@ -18,30 +18,62 @@ angular
   .run(function (amMoment) {
     amMoment.changeLocale('fr');
   })
-  .constant('config', {
-    'bourseBackendURL': 'http://services.librairielabourse.fr/bourse-services'
-  })
-  .config(function ($routeProvider) {
+  .config(function ($httpProvider, $routeProvider) {
+
+    //Sends cookies with requests
+    $httpProvider.defaults.withCredentials = true;
+
+    //Reset default behavior (such as trigerring OPTIONS before to call the real method)
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        resolve: {
+          auth: function (authService) {
+            return authService.isAuthenticated();
+          }
+        }
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
       })
       .when('/employees', {
         templateUrl: 'views/employees.html',
         controller: 'EmployeeCtrl',
-        controllerAs: 'employee'
+        controllerAs: 'employee',
+        resolve: {
+          auth: function (authService) {
+            return authService.isAuthenticated();
+          }
+        }
       })
       .when('/employee/add', {
         templateUrl: 'views/employee_add.html',
         controller: 'EmployeeAddCtrl',
-        controllerAs: 'employeeAdd'
+        controllerAs: 'employeeAdd',
+        resolve: {
+          auth: function (authService) {
+            return authService.isAuthenticated();
+          }
+        }
       })
       .when('/employee/update/:id', {
         templateUrl: 'views/employee_edit.html',
         controller: 'EmployeeEditCtrl',
-        controllerAs: 'employeeEdit'
+        controllerAs: 'employeeEdit',
+        resolve: {
+          auth: function (authService) {
+            return authService.isAuthenticated();
+          }
+        }
       })
       .otherwise({
         redirectTo: '/'

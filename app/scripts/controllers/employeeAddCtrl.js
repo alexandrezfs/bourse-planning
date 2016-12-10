@@ -8,7 +8,7 @@ angular.module('boursePlanningApp')
       employeeService.createEmployee(employee)
         .then(function () {
           $location.path('/employees');
-        })
+        });
     };
 
   });
