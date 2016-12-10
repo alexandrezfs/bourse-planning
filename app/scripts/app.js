@@ -23,12 +23,6 @@ angular
     //Sends cookies with requests
     $httpProvider.defaults.withCredentials = true;
 
-    //Reset default behavior (such as trigerring OPTIONS before to call the real method)
-    $httpProvider.defaults.headers.common = {};
-    $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
-    $httpProvider.defaults.headers.patch = {};
-
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
