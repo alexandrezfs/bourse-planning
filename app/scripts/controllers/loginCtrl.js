@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('boursePlanningApp')
-  .controller('LoginCtrl', function ($scope, $location, authService) {
+  .controller('LoginCtrl', function ($scope, $location, authService, Notification) {
 
     $scope.submitLogin = function (username, password) {
 
@@ -11,7 +11,7 @@ angular.module('boursePlanningApp')
           $location.path('/');
         }, function () {
           console.log('error');
-          $location.path('/login');
+          Notification.error({message: 'Erreur de connexion.', positionX: 'center'});
         });
     };
 
