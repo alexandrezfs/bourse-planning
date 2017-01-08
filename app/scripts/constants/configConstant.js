@@ -2,5 +2,5 @@
 
 angular.module('boursePlanningApp')
   .constant('config', {
-    'bourseBackendURL': 'http://services.librairielabourse.fr/bourse-services'
+    'bourseBackendURL': 'http://127.0.0.1:8080/bourse-services'
   });
